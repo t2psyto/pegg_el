@@ -1,0 +1,60 @@
+To do list for Pegg_el 0.11
+---------------------------
+
+	Pegg_el 0.11 - Linux Support for Casio label printers.
+
+	Copyright (c) 2003,2004 Daniel Amkreutz, <daniel.amkreutz@tu-harburg.de>
+		  (c) 2004 Alex Perry
+		  
+        IMPORTANT NOTICE:
+
+	* This software was designed using data made available by and is released
+          with the permission of CASIO COMPUTER CO., LTD.
+        * CASIO COMPUTER Co., LTD. assumes no responsibility for the content of
+          this software.
+        * Please do not contact CASIO COMPUTER CO., LTD. with any inquiries
+          concerning this software.
+
+	A large amount of code is borrowed from the libusb Documentation.
+	The communication API of the Printer has been greatly documented
+	and published by CASIO COMPUTER CO., LTD
+
+							Many Thanks.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+	This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
+
+	You may use this program for whatever you want as long the above written
+	text remains.
+
+	Please support Pegg by testing it and reporting bugs. !
+
+------
+
+The most important thing: testing, testing and testing. 
+
+Some parts of the code are not well written.
+
+1. So first should be some cosmetic and other enhancements of the code.
+
+2. Next is that i currently doesn't request a print-report at the
+   end of the printing progress. So pegg doesn't recognize a printing
+   error and cannot display it to the user.
+
+3. Furthermore i have not jet  implemented a good errorhandler for
+   the commandline arguments.
+
+4. New software for pegg/pegg_el to make labelcreation easier
+
+---
+
+Daniel Amkreutz <daniel.amkreutz@tu-harburg.de>
+
+
+

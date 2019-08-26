@@ -1,0 +1,102 @@
+For the impatient:
+
+!!! CHECK THE MAKEFILE FIRST !!!
+
+Pegg_el 0.11 Installation
+--------------------------
+
+
+	Pegg_el 0.11 - Linux support for Casio label printers.
+
+	Copyright (c) 2003,2004 Daniel Amkreutz, <daniel.amkreutz@tu-harburg.de>
+	          (c) 2004 Alex Perry
+
+        IMPORTANT NOTICE:
+
+	* This software was designed using data made available by and is released
+          with the permission of CASIO COMPUTER CO., LTD.
+        * CASIO COMPUTER Co., LTD. assumes no responsibility for the content of
+          this software.
+        * Please do not contact CASIO COMPUTER CO., LTD. with any inquiries
+          concerning this software.
+
+	A large amount of code is borrowed from the libusb Documentation.
+	The communication API of the Printer has been greatly documented
+	and published by CASIO COMPUTER CO., LTD
+
+							Many Thanks.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
+
+	You may use this program for whatever you want as long the above written
+	text remains.
+
+	Please support Pegg by testing it and reporting bugs !
+
+------
+
+
+1) INSTALLATION
+
+Note for EL-5000W users:
+
+Before you can use pegg_el you have to change the USB ProductID of to the one the EL-7000W printer has
+in the pegg_el.c file (line 326). 
+
+
+Pegg_el uses libusb >= 0.1.7(!) (libusb.sourceforge.net)
+In order to install Pegg_el 0.11 make sure that you have installed libusb with headers
+(meaning you have a file named usb.h on you machine).
+Before using the make command please check the variables in the makefile. 
+If you own an EL-5000W you will have to add the right productID of the printer in pegg_el.c
+as described there in line 333. After you checked everything just type the folowing 
+to build and install pegg:
+
+	make
+	make install
+
+This will install pegg into the path given in the PREFIX Variable in the Makefile
+and copies the manpage into the manpath.
+If you would like to clean the projectpath then type
+
+	make clean
+
+
+2) TESTING
+
+After the installation you may test pegg by doing the folowing:
+
+1. Connect your printer.
+
+2. Try a pegg_el -t to see if pegg recognizes your printer. You should see the type of label you have
+   mounted on your printer. (You will have to be loged in as root in order to scan the USB)
+
+3. If pegg_el has found your printer print a test label using the test_raw file. To do so type in
+   this command:
+
+   pegg_el -w512 -h128 ./test_raw
+
+   The printer should now print a label with some text on it.
+
+If everything works fine, you are done with installation. Please read the README file, for 
+informations about the commandline options and usage of pegg.
+
+
+3) UNINSTALLATION
+
+If you want to uninstall pegg, just cd to the pegg build directory and type:
+
+	make uninstall
+
+
+
+---
+
+Daniel Amkreutz <daniel.amkreutz@tu-harburg.de>

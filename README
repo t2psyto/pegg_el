@@ -1,0 +1,142 @@
+Readme for Pegg_el 0.11
+-----------------------
+
+	Pegg_el 0.11 - Linux support for Casio label printers.
+
+	Copyright (c) 2003,2004 Daniel Amkreutz, <daniel.amkreutz@tu-harburg.de>
+	          (c) 2004 Alex Perry
+
+        IMPORTANT NOTICE:
+
+	* This software was designed using data made available by and is released
+          with the permission of CASIO COMPUTER CO., LTD.
+        * CASIO COMPUTER Co., LTD. assumes no responsibility for the content of
+          this software.
+        * Please do not contact CASIO COMPUTER CO., LTD. with any inquiries
+          concerning this software.
+
+	A large amount of code is borrowed from the libusb Documentation.
+	The communication API of the Printer has been greatly documented
+	and published by CASIO COMPUTER CO., LTD
+
+							Many Thanks.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+	This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
+
+	You may use this program for whatever you want as long the above written
+	text remains.
+
+	Please support Pegg by testing it and reporting bugs. !
+
+
+------
+
+
+Pegg_el is a linux userspace driver for Casio EL-700/EL-5000W label printers.
+It scans the USB for your printer using libusb (libusb.sourceforge.net).
+Although it is the first Version of pegg_el, it is already capable of nearly
+every feature of the EL-700/EL-5000W printer. 
+Pegg_el accepts many options. A complete list is given below:
+
+
+	FORMAT ARGUMENTS            MEANING
+	--------------------------------------------------------------------
+	
+	-w			    Sets the printing width (variable)
+				    (DEFAULT: 512px)
+	
+	-h			    Sets the printing height (fixed to:
+	                            64,128,256,384)
+				    (DEFAULT: 64px)
+
+
+        OPTION                      MEANING
+	------------------------------------------------------------------
+	-t			    Just test the connection and get some
+	                            Information about the tape loaded
+        
+	-C			    Only make a cut
+	
+	-s0,1 			    Select printing speed 0=low, 1=high
+	                            (DEFAULT: 0)
+
+	-f0,1,2,3		    Feed select: 0=no feed, 1=large margin,
+				    2=small margin, 3=medium margin
+				    
+	-c0,1,2			    Set cut mode during printing (If you just
+	                            want to cut your printed label, then use -C)
+				    0=normal cut, 1=half cut, 2=no cut
+				    (Do not use -c1 in combination with -f2, 
+				    since it will be of no use for you...)
+				    				    
+	-d0,1,2,3,4		    Select the density 0=light...4=dark
+	
+	-o			    Offset (example: Offset 12px => -o12)
+	                            maximum: 255
+				    
+	OUTPUT ARGUMENTS	    MEANING
+	--------------------------------------------------------------------
+
+	-H                          Selects print head (only EL-5000W)
+				    -H0=256dot -H1=64dot
+			
+	-O			    Export data to png file instead of 
+				    printing
+	
+	
+The default arguments of pegg_el are choosen such that the using of pegg_el
+is compatible with the KL/KP Version: pegg. So by just typing
+
+     pegg_el ./test_raw, or pegg_el -d3 ./test_raw
+
+
+pegg_el will print a label with 512 x 64px.
+
+Here are some examples for using pegg_el:
+
+
+1) Print an label out of label.xbm.crw  with dimensions of 2048x384:
+
+
+       pegg_el -w2048 -h384 label.xbm.crw
+
+
+
+2) Print a label out of test.xbm.crw with dimensions 1024x256 at high speed
+   without cutting it:
+   
+      pegg_el -w1024 -h256 -c2 -s1 test.xbm
+      
+      
+3) Just cut:      
+
+      pegg_el -C
+
+
+4) same as 3) but export to save.pnm:
+
+      pegg_el -w1024 -h256 -c2 -s1 -Osave.pnm test.xbm
+
+
+As you can see it is possible to combine the options to match your needs. 
+I would recommend to use the format arguments (-w & -h) everytime you use pegg.
+For people who want to develop new software with/for pegg_el can use the
+pnm-export to check if their new tools are working correct without wasting tape.
+For users of the EL-700 it is possible to simulate a print by using the -H 
+(head select) option. If you choose here the 64dot head, the EL-700 will make
+a full tranfer cycle without printing anything. 
+
+
+Hopefully you can use pegg_el. Please test it and report bugs via email
+
+
+---
+
+Daniel Amkreutz <daniel.amkreutz@tu-harburg.de>
