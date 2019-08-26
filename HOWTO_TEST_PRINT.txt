@@ -1,0 +1,5 @@
+#test file 'test_raw' is pegg_el format width:512px, height:128px
+
+1. print 'test_raw'
+
+  sudo ./pegg_el -w512 -h128 -c0 -s1 -H0 -f2 test_raw
