@@ -47,6 +47,8 @@
 
 */
 
+#include <iso646.h>
+#include <string.h>
 #include "pegg_el.h"
 #include <ctype.h>
 
@@ -328,7 +330,8 @@ int scan_usb (void) {		/* This function scans the USB and sets up the Printer co
 
       if (dev->descriptor.idVendor == 0x07cf) {		/* CASIO's Vendor ID*/
 
-        if (dev->descriptor.idProduct == 0x4006) {	/* Product ID of the EL-700*/
+        if (dev->descriptor.idProduct == 0x4006 ||	/* Product ID of the EL-700*/
+            dev->descriptor.idProduct == 0x4005 ) {	/* Product ID of the EL-5000W/
         
 	/* EL-5000W users: 
 	   ---------------
